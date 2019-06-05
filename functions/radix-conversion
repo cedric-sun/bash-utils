@@ -1,0 +1,13 @@
+h2d() {
+	if [[ $# -ne 1 ]]; then
+		return 255
+	fi
+	printf '%d\n' $1
+}
+
+d2h() {
+	if [[ $# -ne 1 ]]; then
+		return 255
+	fi
+	printf '%x\n' $1
+}

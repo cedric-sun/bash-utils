@@ -1,0 +1,12 @@
+mkcd() {
+	if [[ $# -ne 1 ]]; then
+		echo "Argument error." >&2
+		return 255
+	fi
+	if [[ -d "$1" ]]; then
+		echo "Directory already exists." >&2
+		return 255
+	fi
+	mkdir -v "$1"
+	cd "$1"
+}
