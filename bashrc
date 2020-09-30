@@ -55,13 +55,6 @@ dgov() {
 }
 
 
-hwhich() {
-2>/dev/null ls -1 -U "/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include/$@" \
-    "/usr/local/include/$@" \
-    "/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed/$@" \
-    "/usr/include/$@"
-}
-
 # remove comment line and empty line of unix .conf format file
 noc() {
     grep -e '^\s*$' -e '^\s*#' -v $@

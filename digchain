@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for hostname in $@; do
+    CURNS='a.root-servers.net.'
+    echo "============================"
+    echo "Showing DNS delagation chain while resolving: $hostname"
+    ANS=""
+    while true ; do
+        DIGRESULT="$(dig "@$CURNS" "$hostname")"
+        ANS=$(echo "$DIGRESULT" | grep -A1 'ANSWER SECTION' | tail -n1)
+        if [[ -n "$ANS" ]]; then break; fi
+        echo "Current Name Server: $CURNS"
+        CURNS=$(echo "$DIGRESULT" | grep -A1 'AUTHORITY SECTION' | tail -n1 | awk '{print $NF}')
+    done
+    echo "Answer section: $ANS"
+done
