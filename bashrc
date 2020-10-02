@@ -64,7 +64,6 @@ pyhttp() {
     python3 -m http.server $@
 }
 
-
 #variadic: rfcget 1234 5678 ...
 rfcget() {
     for id in "$@"; do
