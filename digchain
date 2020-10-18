@@ -6,10 +6,10 @@ for hostname in $@; do
     echo "Showing DNS delagation chain while resolving: $hostname"
     ANS=""
     while true ; do
+        echo "Current Name Server: $CURNS"
         DIGRESULT="$(dig "@$CURNS" "$hostname")"
         ANS=$(echo "$DIGRESULT" | grep -A1 'ANSWER SECTION' | tail -n1)
         if [[ -n "$ANS" ]]; then break; fi
-        echo "Current Name Server: $CURNS"
         CURNS=$(echo "$DIGRESULT" | grep -A1 'AUTHORITY SECTION' | tail -n1 | awk '{print $NF}')
     done
     echo "Answer section: $ANS"

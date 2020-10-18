@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#TODO: version number may change!
+#TODO: use realpath to resolve annoying ../../..
 2>/dev/null ls -1 -U "/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/$@"\
 	 "/usr/local/include/$@"\
 	 "/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed/$@"\
