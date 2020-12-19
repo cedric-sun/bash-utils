@@ -1,4 +1,9 @@
 alias dush='du -sh'
+
+duss(){
+    du -sh "$@" | sort -rh
+}
+
 alias unhtml="perl -MHTML::Entities -pe 'decode_entities(\$_);'"
 
 # requires X and xclip; not working in Wayland
